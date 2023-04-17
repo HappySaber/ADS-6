@@ -12,10 +12,10 @@ class TPQueue {
  public:
   TPQueue() : first(0), last(0), count(0) { arr =new T[size]; }
   bool isEmpty() const {
-	  return 0 == count;
+    return 0 == count;
   }
   bool isFull() const {
-	  return size == count;
+    return size == count;
   }
   const T& pop() {
     if (isEmpty()) {
@@ -26,14 +26,15 @@ class TPQueue {
     }
   }
   void push(const T& value) {
-    if (isFull()) throw std::string("Full!");
-    else {
+    if (isFull()) {
+      throw std::string("Full!");
+    } else {
       int l = last;
       arr[last % size] = value;
       T temp = arr[l % size];
-      while (arr[l % size].prior > arr[(l-1)%size].prior && l > first){
+      while (arr[l % size].prior > arr[(l-1)%size].prior && l > first) {
         temp = arr[l % size];
-        arr[l % size] = arr[(x - 1) % size];
+        arr[l % size] = arr[(l - 1) % size];
         arr[(l - 1) % size] = temp;
         l--;
       }
